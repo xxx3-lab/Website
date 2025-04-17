@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHITEO - Digital Solutions Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: url('https://i.pinimg.com/originals/9c/14/86/9c14863b9e64ffc65cdfda4cdc9a0b99.gif') center/cover no-repeat;
+    /* opacity: 0.15; */
+}
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.5); /* Adjusted overlay color and opacity */
+}
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            left: 10%;
+        }
+        
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+        
+        .circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+        
+        .circle:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 6s;
+        }
+        
+        .circle:nth-child(5) {
+            width: 150px;
+            height: 150px;
+            top: 70%;
+            right: 40%;
+            animation-delay: 8s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+        
+        .card {
+            backdrop-filter: blur(10px);
+            background: rgba(12, 12, 12, 0.7);
+            border: 1px solid rgba(14, 14, 14, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-icon:hover {
+            transform: translateY(-5px);
+            color: #60a5fa;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .language-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        .language-option:hover, .language-option.active {
+            opacity: 1;
+            color: #2b2b2b;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            background: rgba(7, 7, 7, 0.7);
+            border: 1px solid rgba(19, 19, 19, 0.3);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #1d1d1d;
+        }
+        
+        .portfolio-item {
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(15, 15, 15, 0.3);
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            border-color: #1d1d1d;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1d1d1d;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section {
+            scroll-margin-top: 100px;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1d1d1d;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #1d1d1d;
+            border-radius: 4px;
+        }
+        
+        .floating-button {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(29, 29, 29, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 37, 37, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(192, 192, 192, 0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Elements -->
+    <div class="bg-animation"></div>
+    <div class="bg-overlay"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-gray-900 bg-opacity-90 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-blue-400">AHITEO</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a>
+                    <a href="#services" class="nav-link text-gray-300 hover:text-white">Services</a>
+                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-white">Portfolio</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-300 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="pt-20 pb-16">
+        <!-- Hero Section -->
+        <section id="home" class="section min-h-screen flex items-center justify-center px-4">
+            <div class="card rounded-2xl p-8 max-w-4xl w-full mx-4 relative">
+                <!-- Language Selector -->
+                <div class="absolute top-4 right-4 flex space-x-2">
+                    <div class="language-option active" data-lang="en">EN</div>
+                    <div class="language-option" data-lang="ru">RU</div>
+                    <div class="language-option" data-lang="zh">中文</div>
+                    <div class="language-option" data-lang="ja">日本語</div>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Avatar Section -->
+                    <div class="md:w-1/3 flex justify-center mb-8 md:mb-0">
+                        <div class="w-48 h-48 rounded-full bg-gradient-to-br from-blue-900 to-gray-800 flex items-center justify-center border-2 border-blue-700">
+                            <span class="text-5xl font-bold text-blue-400">A</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Section -->
+                    <div class="md:w-2/3 md:pl-8">
+                        <!-- English Content -->
+                        <div class="lang-content" data-lang="en">
+                            <h1 class="text-3xl font-bold mb-2">AHITEO</h1>
+                            <h2 class="text-xl text-blue-400 mb-4">Digital Solutions Specialist</h2>
+                            <p class="mb-6 text-gray-300">Expert in script development, websites, Telegram bots, SQL databases, visual reporting, system maintenance, and graphic design with a focus on aesthetic presentations.</p>
+                        </div>
+                        
+                        <!-- Russian Content -->
+                        <div class="lang-content hidden" data-lang="ru">
+                            <h1 class="text-3xl font-bold mb-2">AHITEO</h1>
+                            <h2 class="text-xl text-blue-400 mb-4">Специалист цифровых решений</h2>
+                            <p class="mb-6 text-gray-300">Эксперт по разработке скриптов, веб-сайтов, Telegram ботов, SQL баз данных, визуальной отчетности, обслуживанию систем и графическому дизайну с акцентом на эстетические презентации.</p>
+                        </div>
+                        
+                        <!-- Chinese Content -->
+                        <div class="lang-content hidden" data-lang="zh">
+                            <h1 class="text-3xl font-bold mb-2">AHITEO</h1>
+                            <h2 class="text-xl text-blue-400 mb-4">数字解决方案专家</h2>
+                            <p class="mb-6 text-gray-300">专注于脚本开发、网站、Telegram机器人、SQL数据库、可视化报告、系统维护和平面设计的专家，注重美学演示。</p>
+                        </div>
+                        
+                        <!-- Japanese Content -->
+                        <div class="lang-content hidden" data-lang="ja">
+                            <h1 class="text-3xl font-bold mb-2">AHITEO</h1>
+                            <h2 class="text-xl text-blue-400 mb-4">デジタルソリューションの専門家</h2>
+                            <p class="mb-6 text-gray-300">スクリプト開発、ウェブサイト、Telegramボット、SQLデータベース、ビジュアルレポート、システムメンテナンス、美的プレゼンテーションに焦点を当てたグラフィックデザインの専門家。</p>
+                        </div>
+                        
+                        <!-- Services -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <span class="text-sm" data-en="Scripts" data-ru="Скрипты" data-zh="脚本" data-ja="スクリプト">Scripts</span>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <span class="text-sm" data-en="Websites" data-ru="Сайты" data-zh="网站" data-ja="ウェブサイト">Websites</span>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fab fa-telegram"></i>
+                                </div>
+                                <span class="text-sm" data-en="Telegram Bots" data-ru="Telegram Боты" data-zh="Telegram机器人" data-ja="Telegramボット">Telegram Bots</span>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <span class="text-sm" data-en="SQL" data-ru="SQL" data-zh="SQL" data-ja="SQL">SQL</span>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <span class="text-sm" data-en="Visual Reports" data-ru="Визуальные отчеты" data-zh="可视化报告" data-ja="ビジュアルレポート">Visual Reports</span>
+                            </div>
+                            <div class="flex flex-col items-center text-center">
+                                <div class="service-icon text-2xl mb-2 text-blue-400">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <span class="text-sm" data-en="System Maintenance" data-ru="Обслуживание систем" data-zh="系统维护" data-ja="システムメンテナンス">System Maintenance</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="flex justify-center space-x-6">
+                            <a href="#" class="social-icon text-xl text-gray-400 hover:text-blue-400" title="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="social-icon text-xl text-gray-400 hover:text-blue-400" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-icon text-xl text-gray-400 hover:text-blue-400" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-icon text-xl text-gray-400 hover:text-blue-400" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon text-xl text-gray-400 hover:text-blue-400" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Contact Button -->
+                        <div class="mt-8 text-center">
+                            <a href="#contact" class="inline-block px-6 py-2 bg-gradient-to-r from-blue-700 to-blue-900 rounded-full text-white hover:from-blue-600 hover:to-blue-800 transition-all">
+                                <span data-en="Contact Me" data-ru="Связаться" data-zh="联系我" data-ja="お問い合わせ">Contact Me</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="section py-16 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl font-bold text-center mb-12 text-white">
+                    <span data-en="My Services" data-ru="Мои Услуги" data-zh="我的服务" data-ja="私のサービス">My Services</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Script Development" data-ru="Разработка Скриптов" data-zh="脚本开发" data-ja="スクリプト開発">Script Development</h3>
+                        <p class="text-gray-300" data-en="Custom automation scripts to streamline your workflows and increase productivity." 
+                           data-ru="Пользовательские скрипты автоматизации для оптимизации рабочих процессов и повышения производительности."
+                           data-zh="自定义自动化脚本，简化您的工作流程并提高生产力。"
+                           data-ja="ワークフローを合理化し生産性を向上させるためのカスタム自動化スクリプト。">
+                            Custom automation scripts to streamline your workflows and increase productivity.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Web Development" data-ru="Веб-Разработка" data-zh="网站开发" data-ja="ウェブ開発">Web Development</h3>
+                        <p class="text-gray-300" data-en="Modern, responsive websites tailored to your business needs with clean code and optimal performance." 
+                           data-ru="Современные адаптивные веб-сайты, соответствующие вашим бизнес-потребностям, с чистым кодом и оптимальной производительностью."
+                           data-zh="根据您的业务需求定制的现代响应式网站，代码简洁，性能最佳。"
+                           data-ja="ビジネスニーズに合わせたモダンでレスポンシブなウェブサイト、クリーンなコードと最適なパフォーマンスを備えています。">
+                            Modern, responsive websites tailored to your business needs with clean code and optimal performance.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Telegram Bots" data-ru="Telegram Боты" data-zh="Telegram机器人" data-ja="Telegramボット">Telegram Bots</h3>
+                        <p class="text-gray-300" data-en="Custom Telegram bots for automation, notifications, customer service, and more." 
+                           data-ru="Пользовательские Telegram боты для автоматизации, уведомлений, обслуживания клиентов и многого другого."
+                           data-zh="用于自动化、通知、客户服务等的自定义Telegram机器人。"
+                           data-ja="自動化、通知、カスタマーサービスなどのためのカスタムTelegramボット。">
+                            Custom Telegram bots for automation, notifications, customer service, and more.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="SQL & Databases" data-ru="SQL и Базы Данных" data-zh="SQL和数据库" data-ja="SQLとデータベース">SQL & Databases</h3>
+                        <p class="text-gray-300" data-en="Database design, optimization, and management for efficient data storage and retrieval." 
+                           data-ru="Проектирование, оптимизация и управление базами данных для эффективного хранения и извлечения данных."
+                           data-zh="数据库设计、优化和管理，实现高效的数据存储和检索。"
+                           data-ja="効率的なデータ保存と検索のためのデータベース設計、最適化、および管理。">
+                            Database design, optimization, and management for efficient data storage and retrieval.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Visual Reporting" data-ru="Визуальная Отчетность" data-zh="可视化报告" data-ja="ビジュアルレポート">Visual Reporting</h3>
+                        <p class="text-gray-300" data-en="Beautiful, insightful data visualizations and dashboards to make your data tell a story." 
+                           data-ru="Красивые, информативные визуализации данных и панели мониторинга, которые помогут вашим данным рассказать историю."
+                           data-zh="美观、富有洞察力的数据可视化和仪表板，让您的数据讲述故事。"
+                           data-ja="データが物語を語れるようにする美しく洞察に満ちたデータ可視化とダッシュボード。">
+                            Beautiful, insightful data visualizations and dashboards to make your data tell a story.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Graphic Design" data-ru="Графический Дизайн" data-zh="平面设计" data-ja="グラフィックデザイン">Graphic Design</h3>
+                        <p class="text-gray-300" data-en="Aesthetic designs for presentations, layouts, branding, and marketing materials in modern gray/blue tones." 
+                           data-ru="Эстетичные дизайны для презентаций, макетов, брендинга и маркетинговых материалов в современных серо-синих тонах."
+                           data-zh="现代灰/蓝色调的演示文稿、布局、品牌和营销材料的美学设计。"
+                           data-ja="モダンなグレー/ブルーのトーンでのプレゼンテーション、レイアウト、ブランディング、マーケティング資料のための美的デザイン。">
+                            Aesthetic designs for presentations, layouts, branding, and marketing materials in modern gray/blue tones.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 7 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="System Maintenance" data-ru="Обслуживание Систем" data-zh="系统维护" data-ja="システムメンテナンス">System Maintenance</h3>
+                        <p class="text-gray-300" data-en="Windows reinstallation, system cleaning, optimization, and troubleshooting for peak performance." 
+                           data-ru="Переустановка Windows, очистка системы, оптимизация и устранение неполадок для максимальной производительности."
+                           data-zh="Windows重新安装、系统清理、优化和故障排除，以实现最佳性能。"
+                           data-ja="最高のパフォーマンスを実現するためのWindowsの再インストール、システムクリーニング、最適化、トラブルシューティング。">
+                            Windows reinstallation, system cleaning, optimization, and troubleshooting for peak performance.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 8 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-object-group"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Layout Design" data-ru="Дизайн Макетов" data-zh="布局设计" data-ja="レイアウトデザイン">Layout Design</h3>
+                        <p class="text-gray-300" data-en="Professional layout design for print and digital media with attention to typography and visual hierarchy." 
+                           data-ru="Профессиональный дизайн макетов для печатных и цифровых медиа с вниманием к типографике и визуальной иерархии."
+                           data-zh="印刷和数字媒体的专业布局设计，注重排版和视觉层次。"
+                           data-ja="タイポグラフィと視覚的階層に注意を払った印刷物とデジタルメディアのためのプロフェッショナルなレイアウトデザイン。">
+                            Professional layout design for print and digital media with attention to typography and visual hierarchy.
+                        </p>
+                    </div>
+                    
+                    <!-- Service 9 -->
+                    <div class="service-card rounded-lg p-6">
+                        <div class="text-blue-400 text-4xl mb-4">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2" data-en="Custom Solutions" data-ru="Индивидуальные Решения" data-zh="定制解决方案" data-ja="カスタムソリューション">Custom Solutions</h3>
+                        <p class="text-gray-300" data-en="Tailored digital solutions to meet your specific business requirements and challenges." 
+                           data-ru="Индивидуальные цифровые решения, соответствующие вашим конкретным бизнес-требованиям и вызовам."
+                           data-zh="量身定制的数字解决方案，满足您的特定业务需求和挑战。"
+                           data-ja="特定のビジネス要件と課題に対応するためのテーラーメイドのデジタルソリューション。">
+                            Tailored digital solutions to meet your specific business requirements and challenges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section py-16 px-4 bg-gray-900 bg-opacity-70">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl font-bold text-center mb-12 text-white">
+                    <span data-en="My Portfolio" data-ru="Мое Портфолио" data-zh="我的作品集" data-ja="私のポートフォリオ">My Portfolio</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fas fa-code text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Automation Scripts" data-ru="Скрипты Автоматизации" data-zh="自动化脚本" data-ja="自動化スクリプト">Automation Scripts</h3>
+                            <p class="text-gray-300 text-sm" data-en="Various automation scripts for data processing and workflow optimization." 
+                               data-ru="Различные скрипты автоматизации для обработки данных и оптимизации рабочих процессов."
+                               data-zh="用于数据处理和工作流程优化的各种自动化脚本。"
+                               data-ja="データ処理とワークフロー最適化のためのさまざまな自動化スクリプト。">
+                                Various automation scripts for data processing and workflow optimization.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 2 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fas fa-globe text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Business Websites" data-ru="Бизнес Сайты" data-zh="商业网站" data-ja="ビジネスウェブサイト">Business Websites</h3>
+                            <p class="text-gray-300 text-sm" data-en="Responsive business websites with modern design and functionality." 
+                               data-ru="Адаптивные бизнес-сайты с современным дизайном и функциональностью."
+                               data-zh="具有现代设计和功能的响应式商业网站。"
+                               data-ja="モダンなデザインと機能を備えたレスポンシブなビジネスウェブサイト。">
+                                Responsive business websites with modern design and functionality.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 3 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fab fa-telegram text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Telegram Bots" data-ru="Telegram Боты" data-zh="Telegram机器人" data-ja="Telegramボット">Telegram Bots</h3>
+                            <p class="text-gray-300 text-sm" data-en="Custom bots for notifications, customer service, and data collection." 
+                               data-ru="Пользовательские боты для уведомлений, обслуживания клиентов и сбора данных."
+                               data-zh="用于通知、客户服务和数据收集的自定义机器人。"
+                               data-ja="通知、カスタマーサービス、データ収集のためのカスタムボット。">
+                                Custom bots for notifications, customer service, and data collection.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 4 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fas fa-chart-pie text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Data Dashboards" data-ru="Дашборды Данных" data-zh="数据仪表板" data-ja="データダッシュボード">Data Dashboards</h3>
+                            <p class="text-gray-300 text-sm" data-en="Interactive dashboards for business intelligence and data analysis." 
+                               data-ru="Интерактивные панели мониторинга для бизнес-аналитики и анализа данных."
+                               data-zh="用于商业智能和数据分析的交互式仪表板。"
+                               data-ja="ビジネスインテリジェンスとデータ分析のためのインタラクティブなダッシュボード。">
+                                Interactive dashboards for business intelligence and data analysis.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 5 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fas fa-paint-brush text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Graphic Design" data-ru="Графический Дизайн" data-zh="平面设计" data-ja="グラフィックデザイン">Graphic Design</h3>
+                            <p class="text-gray-300 text-sm" data-en="Aesthetic designs for branding, marketing, and presentations." 
+                               data-ru="Эстетичные дизайны для брендинга, маркетинга и презентаций."
+                               data-zh="用于品牌、营销和演示的美学设计。"
+                               data-ja="ブランディング、マーケティング、プレゼンテーションのための美的デザイン。">
+                                Aesthetic designs for branding, marketing, and presentations.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 6 -->
+                    <div class="portfolio-item rounded-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-gray-800 to-blue-900 flex items-center justify-center">
+                            <i class="fas fa-file-alt text-6xl text-blue-400 opacity-70"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-en="Layout Projects" data-ru="Проекты Макетов" data-zh="布局项目" data-ja="レイアウトプロジェクト">Layout Projects</h3>
+                            <p class="text-gray-300 text-sm" data-en="Professional layouts for print materials, reports, and digital publications." 
+                               data-ru="Профессиональные макеты для печатных материалов, отчетов и цифровых публикаций."
+                               data-zh="用于印刷材料、报告和数字出版物的专业布局。"
+                               data-ja="印刷物、レポート、デジタル出版物のためのプロフェッショナルなレイアウト。">
+                                Professional layouts for print materials, reports, and digital publications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="section py-16 px-4">
+            <div class="container mx-auto max-w-4xl">
+                <div class="card rounded-2xl p-8">
+                    <h2 class="text-3xl font-bold text-center mb-8 text-white">
+                        <span data-en="About Me" data-ru="Обо Мне" data-zh="关于我" data-ja="私について">About Me</span>
+                    </h2>
+                    
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                            <div class="w-40 h-40 rounded-full bg-gradient-to-br from-blue-900 to-gray-800 flex items-center justify-center border-2 border-blue-700">
+                                <span class="text-4xl font-bold text-blue-400">A</span>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 md:pl-8">
+                            <!-- English Content -->
+                            <div class="lang-content" data-lang="en">
+                                <p class="mb-4 text-gray-300">
+                                    I'm a digital solutions specialist with expertise in multiple technical and creative disciplines. My passion lies in creating efficient, beautiful solutions that solve real problems.
+                                </p>
+                                <p class="mb-4 text-gray-300">
+                                    With years of experience in both development and design, I bring a unique perspective to projects, ensuring they are not only functional but also visually appealing and user-friendly.
+                                </p>
+                                <p class="text-gray-300">
+                                    My aesthetic leans towards modern, minimalist designs with a focus on typography and clean layouts, often using a sophisticated gray and blue color palette.
+                                </p>
+                            </div>
+                            
+                            <!-- Russian Content -->
+                            <div class="lang-content hidden" data-lang="ru">
+                                <p class="mb-4 text-gray-300">
+                                    Я специалист по цифровым решениям с опытом работы в различных технических и творческих областях. Моя страсть - создавать эффективные, красивые решения, которые решают реальные проблемы.
+                                </p>
+                                <p class="mb-4 text-gray-300">
+                                    Имея многолетний опыт как в разработке, так и в дизайне, я привношу уникальный взгляд на проекты, гарантируя, что они не только функциональны, но и визуально привлекательны и удобны для пользователей.
+                                </p>
+                                <p class="text-gray-300">
+                                    Мой эстетический вкус склоняется к современному, минималистичному дизайну с акцентом на типографику и чистые макеты, часто с использованием изысканной серо-синей цветовой палитры.
+                                </p>
+                            </div>
+                            
+                            <!-- Chinese Content -->
+                            <div class="lang-content hidden" data-lang="zh">
+                                <p class="mb-4 text-gray-300">
+                                    我是一名数字解决方案专家，擅长多种技术和创意领域。我的热情在于创建高效、美观的解决方案来解决实际问题。
+                                </p>
+                                <p class="mb-4 text-gray-300">
+                                    凭借多年的开发和设计经验，我为项目带来了独特的视角，确保它们不仅功能强大，而且视觉吸引人且用户友好。
+                                </p>
+                                <p class="text-gray-300">
+                                    我的审美倾向于现代、简约的设计，注重排版和简洁的布局，通常使用精致的灰色和蓝色调色板。
+                                </p>
+                            </div>
+                            
+                            <!-- Japanese Content -->
+                            <div class="lang-content hidden" data-lang="ja">
+                                <p class="mb-4 text-gray-300">
+                                    私はさまざまな技術的および創造的な分野に精通したデジタルソリューションの専門家です。私の情熱は、実際の問題を解決する効率的で美しいソリューションを作成することにあります。
+                                </p>
+                                <p class="mb-4 text-gray-300">
+                                    開発とデザインの両方での長年の経験を持ち、プロジェクトに独自の視点をもたらし、機能性だけでなく視覚的魅力とユーザーフレンドリーさも確保します。
+                                </p>
+                                <p class="text-gray-300">
+                                    私の美的感覚は、タイポグラフィとクリーンなレイアウトに焦点を当てたモダンでミニマルなデザインに向かっており、洗練されたグレーとブルーのカラーパレットをよく使用します。
+                                </p>
+                            </div>
+                            
+                            <!-- Skills -->
+                            <div class="mt-8">
+                                <h3 class="text-xl font-semibold mb-4 text-blue-400">
+                                    <span data-en="Technical Skills" data-ru="Технические Навыки" data-zh="技术技能" data-ja="技術スキル">Technical Skills</span>
+                                </h3>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>JavaScript</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>Python</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>SQL</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>HTML/CSS</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>Telegram API</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>Data Visualization</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>Adobe Creative Suite</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>Figma</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                                        <span>System Administration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section py-16 px-4 bg-gray-900 bg-opacity-70">
+            <div class="container mx-auto max-w-4xl">
+                <div class="card rounded-2xl p-8">
+                    <h2 class="text-3xl font-bold text-center mb-8 text-white">
+                        <span data-en="Get In Touch" data-ru="Связаться" data-zh="联系我" data-ja="お問い合わせ">Get In Touch</span>
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-blue-400">
+                                <span data-en="Contact Information" data-ru="Контактная Информация" data-zh="联系信息" data-ja="連絡先情報">Contact Information</span>
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="text-blue-400 mr-4 mt-1">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium" data-en="Email" data-ru="Email" data-zh="电子邮件" data-ja="メール">Email</div>
+                                        <div class="text-gray-300">contact@ahiteo.com</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-400 mr-4 mt-1">
+                                        <i class="fab fa-telegram"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium" data-en="Telegram" data-ru="Telegram" data-zh="Telegram" data-ja="Telegram">Telegram</div>
+                                        <div class="text-gray-300">@ahiteo</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="text-blue-400 mr-4 mt-1">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium" data-en="Phone" data-ru="Телефон" data-zh="电话" data-ja="電話">Phone</div>
+                                        <div class="text-gray-300">+1 (123) 456-7890</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h3 class="text-xl font-semibold mb-4 text-blue-400">
+                                    <span data-en="Social Media" data-ru="Социальные Сети" data-zh="社交媒体" data-ja="ソーシャルメディア">Social Media</span>
+                                </h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="social-icon text-2xl text-gray-400 hover:text-blue-400">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="social-icon text-2xl text-gray-400 hover:text-blue-400">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" class="social-icon text-2xl text-gray-400 hover:text-blue-400">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon text-2xl text-gray-400 hover:text-blue-400">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-blue-400">
+                                <span data-en="Send a Message" data-ru="Отправить Сообщение" data-zh="发送消息" data-ja="メッセージを送る">Send a Message</span>
+                            </h3>
+                            <form>
+                                <div class="mb-4">
+                                    <label class="block text-gray-300 mb-2" for="name" data-en="Name" data-ru="Имя" data-zh="姓名" data-ja="名前">Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-300 mb-2" for="email" data-en="Email" data-ru="Email" data-zh="电子邮件" data-ja="メール">Email</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-300 mb-2" for="message" data-en="Message" data-ru="Сообщение" data-zh="消息" data-ja="メッセージ">Message</label>
+                                    <textarea id="message" rows="4" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-blue-500"></textarea>
+                                </div>
+                                <button type="submit" class="w-full px-6 py-2 bg-gradient-to-r from-blue-700 to-blue-900 rounded-full text-white hover:from-blue-600 hover:to-blue-800 transition-all">
+                                    <span data-en="Send Message" data-ru="Отправить" data-zh="发送" data-ja="送信">Send Message</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-90 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-400">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-400">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-400">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-400">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon text-gray-400 hover:text-blue-400">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm">
+                <span data-en="© 2023 AHITEO. All rights reserved." data-ru="© 2023 AHITEO. Все права защищены." data-zh="© 2023 AHITEO。保留所有权利。" data-ja="© 2023 AHITEO。全著作権所有。">
+                    © 2023 AHITEO. All rights reserved.
+                </span>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Floating Contact Button -->
+    <a href="#contact" class="fixed bottom-6 right-6 w-16 h-16 bg-blue-700 rounded-full flex items-center justify-center text-white text-2xl shadow-lg floating-button">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+
+    <script>
+        // Language switching functionality
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Update active language
+                document.querySelector('.language-option.active').classList.remove('active');
+                this.classList.add('active');
+                
+                const lang = this.getAttribute('data-lang');
+                
+                // Show/hide language content
+                document.querySelectorAll('.lang-content').forEach(content => {
+                    content.classList.add('hidden');
+                    if (content.getAttribute('data-lang') === lang) {
+                        content.classList.remove('hidden');
+                    }
+                });
+                
+                // Update all text elements with data attributes
+                document.querySelectorAll('[data-en]').forEach(element => {
+                    const text = element.getAttribute(`data-${lang}`);
+                    if (text) {
+                        element.textContent = text;
+                    }
+                });
+            });
+        });
+        
+        // Floating animation for circles
+        const circles = document.querySelectorAll('.circle');
+        circles.forEach((circle, index) => {
+            // Randomize initial positions slightly
+            const randomX = Math.random() * 20 - 10;
+            const randomY = Math.random() * 20 - 10;
+            circle.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            
+            // Randomize animation duration
+            const duration = 15 + Math.random() * 10;
+            circle.style.animationDuration = `${duration}s`;
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle (placeholder - would need more implementation)
+        document.querySelector('.md\\:hidden button').addEventListener('click', function() {
+            alert('Mobile menu would open here in a full implementation');
+        });
+    </script>
+</body>
+</html>
